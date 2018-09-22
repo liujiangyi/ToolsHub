@@ -1,8 +1,8 @@
 # ToolsHub
 
-c_file: create xx.c xx.h 
-example:
-input: c_file common
-output: common.c common.h and insert necessary Preprocess instructions
+#c_file: create xx.c xx.h 
+#example:
+#input: c_file common
+#output: common.c common.h and insert necessary Preprocess instructions
 
 
