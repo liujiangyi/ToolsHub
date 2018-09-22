@@ -1,0 +1,45 @@
+#!/bin/bash
+
+if [ $# -lt 1 ] ; then
+    echo "please input file name!"
+    exit 1
+fi
+
+file_name="$1"
+echo $file_name
+
+if [ -e $file_name.c ];then
+    echo "$file_name.c is exist"
+    exit 1
+fi
+
+if [ -e $file_name.h ];then
+    echo "$file_name.h is exist"
+    exit 1
+fi
+
+uppercase_file_name=$(echo $file_name | tr 'a-z' 'A-Z')
+echo $uppercase_file_name
+
+touch $file_name.c
+touch $file_name.h
+chmod 777 $file_name.c
+chmod 777 $file_name.h
+
+# init .h file
+str="#ifndef    _${uppercase_file_name}_H_"
+echo $str >> $file_name.h
+
+str="#define    _${uppercase_file_name}_H_"
+echo $str >> $file_name.h
+
+str=""
+echo $str >> $file_name.h
+
+str="#endif"
+echo $str >> $file_name.h
+
+#include "bsp.h"
+# init .c file
+str="#include    \"${file_name}.h\""
+echo $str >> $file_name.c
